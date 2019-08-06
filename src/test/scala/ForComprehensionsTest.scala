@@ -1,6 +1,21 @@
 import org.scalatest.{FlatSpec, Matchers}
 
 class ForComprehensionsTest extends FlatSpec with Matchers {
+  /*
+  * for (i <- array) yield j
+  * translates to:
+  * array.map(i => j)
+  *
+  *
+  * for (i <- array if (i % 2 == 0)) yield i * 2
+  * translates to:
+  * array withFilter (i % 2 == 0) map (i => i * 2)
+  *
+  *
+  * for (i <- array; j <- Array(i, i + 1) yield j
+  * translates to:
+  * array.flatMap(i => Array(i, i + 1))
+  * */
 
   case class Book(title: String, isbn: String, authors: List[String])
 
